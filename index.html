@@ -42,9 +42,9 @@
 	</td>
     <td>
 		<div id="metric-box" class="box">
-			<span id="types_html" class="final"></span>
-			<span id="tokens_html" class="final"></span>
-			<span id="ttr_html" class="final"></span>
+			<span id="types_html" class="final"></span><br>
+			<span id="tokens_html" class="final"></span><br>
+			<span id="ttr_html" class="final"></span><br>
 		</div>
 	</td>
   </tr>
@@ -222,11 +222,11 @@ if (!('webkitSpeechRecognition' in window)) {
 	var tokencount = tokens.length;
 	tokens_html.innerHTML = "Tokens: " + tokencount;
 	var types = new Set(tokens);
-	var typecount = types.length;
+	var typecount = types.size;
 	types_html.innerHTML = "Types: " + typecount;
 	var ttr = typecount/tokencount;
 	ttr_html.innerHTML = "TTR: " + ttr;
-	  
+
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
