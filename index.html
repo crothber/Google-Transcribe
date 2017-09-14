@@ -26,7 +26,7 @@
 <table style="width:100%">
   <tr>
     <th><span class="label">Transcription</span></th>
-    <th><span class="label">Top Words</span></th>
+    <th><span class="label">Metrics</span></th>
   </tr>
   <tr>
     <td>
@@ -41,8 +41,10 @@
 		</div>
 	</td>
     <td>
-		<div id="top-word-box" class="box">
-			<span id="top_words" class="final"></span>
+		<div id="metric-box" class="box">
+			<span id="types_html" class="final"></span>
+			<span id="tokens_html" class="final"></span>
+			<span id="ttr_html" class="final"></span>
 		</div>
 	</td>
   </tr>
@@ -135,20 +137,6 @@ select_language.selectedIndex = 6;
 updateCountry();
 select_dialect.selectedIndex = 6;
 showInfo('info_start');
-function find_top_words(wordstring) {
-	word_array_unsorted = wordstring.split(" ");
-	word_fdist = [];
-	for (var i=0; i<word_array_unsorted.length; i++) {
-		word = word_array_unsorted[i];
-		if (word_fdist.indexOf(word) == -1) {
-			word_fdist[word] = 1;
-		} else {
-			word_fdist[word] += 1;
-		}
-	}
-	alert(word_fdist.keys());
-	return word_array_sorted;
-}
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
     select_dialect.remove(i);
@@ -230,12 +218,14 @@ if (!('webkitSpeechRecognition' in window)) {
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
     
-	top_words.innerHTML = "";
-    top_words_array = find_top_words(final_transcript);
-    for (var i=0; i<top_words_array.length; i++) {
-		top_words.innerHTML += top_words_array[i];
-		top_words.innerHTML += "|";
-	}
+	var tokens = final_transcript.split(" ");
+	var tokencount = tokens.length;
+	tokens_html.innerHTML = "Tokens: " + tokencount;
+	var types = new Set(tokens);
+	var typecount = types.length;
+	types_html.innerHTML = "Types: " + typecount;
+	var ttr = typecount/tokencount;
+	ttr_html.innerHTML = "TTR: " + ttr;
 	  
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
