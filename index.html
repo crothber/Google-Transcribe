@@ -234,7 +234,7 @@ if (!('webkitSpeechRecognition' in window)) {
     top_words_array = find_top_words(final_transcript);
     for (var i=0; i<top_words_array.length; i++) {
 		top_words.innerHTML += top_words_array[i];
-		top_words.innerHTML += <br>;
+		top_words.innerHTML += "|";
 	}
 	  
     interim_span.innerHTML = linebreak(interim_transcript);
