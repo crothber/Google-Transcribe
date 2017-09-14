@@ -56,6 +56,7 @@ a:hover {
 #headline {
 	font-size: 40px;
 	font-weight: 300;
+	color: #F78D20;
 }
 #info {
 	font-size: 20px;
@@ -70,6 +71,7 @@ a:hover {
 	padding: 15px;
 	text-align: left;
 	min-height: 150px;
+	color: 8680BC;
 }
 #start_button {
 	border: 0;
