@@ -218,7 +218,12 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     final_transcript = capitalize(final_transcript);
     final_span.innerHTML = linebreak(final_transcript);
-    top_words.innerHTML = find_top_words(final_transcript);
+    
+    top_words_array = find_top_words(final_transcript);
+    for (var i=0; i<top_words_array.length; i++) {
+		top_words.innerHTML += top_words_array[i];
+	}
+	  
     interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
