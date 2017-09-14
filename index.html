@@ -138,7 +138,7 @@ showInfo('info_start');
 function find_top_words(wordstring) {
 	word_array_unsorted = wordstring.split(" ");
 	word_fdist = [];
-	for (var i=0; i<word_array_unsorted.length(); i++) {
+	for (var i=0; i<word_array_unsorted.length; i++) {
 		word = word_array_unsorted[i];
 		if (word_fdist.indexOf(word) == -1) {
 			word_fdist[word] = 1;
